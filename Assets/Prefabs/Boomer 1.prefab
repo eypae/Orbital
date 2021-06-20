@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5858593873170235400}
   - component: {fileID: 3956706571134712475}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -3947590653956242143, guid: d96747f56e1f0694d89f69278dad6b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2321754225710446100}
   - component: {fileID: 1580302971621368099}
   - component: {fileID: 7269677065248258720}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Boomer 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -110,8 +110,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3393263380579687380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.722549, y: -1.9174099, z: -84.42}
-  m_LocalScale: {x: 0.25418395, y: 0.25418395, z: 0.25418395}
+  m_LocalPosition: {x: -4.722549, y: -1.9174099, z: 0}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
   m_Children:
   - {fileID: 7048046037787909365}
   - {fileID: 577417370790007705}
@@ -204,10 +204,12 @@ MonoBehaviour:
   speed: 2
   timeBetweenAttacks: 3
   damage: 1
-  pickupChance: 30
+  pickupChance: 50
   pickups:
   - {fileID: 7765557666918276631, guid: c2daff43f3f1fa0419fdd5e59cd4f534, type: 3}
-  stopDistance: 1
+  - {fileID: 7491506604478200618, guid: c9474131503b45349962e282c71adfcc, type: 3}
+  - {fileID: 8596536809803793382, guid: 990ce7768a1bc7744b256b185eb15603, type: 3}
+  stopDistance: 3
   spitPoint: {fileID: 3997470507029500790}
   spit: {fileID: 5888313298543942427, guid: b556d04e1a81f75438baa01195abc053, type: 3}
 --- !u!1 &3988401235671618098
@@ -220,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7048046037787909365}
   - component: {fileID: 6863206689550883289}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +285,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8060548166995152987, guid: d96747f56e1f0694d89f69278dad6b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -304,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3997470507029500790}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3440820897646830913}
   - component: {fileID: 8739040534726506274}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +397,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -5263986533772003578, guid: d96747f56e1f0694d89f69278dad6b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -417,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6476300326853284225}
   - component: {fileID: 652369638435448816}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Pui!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577417370790007705}
   - component: {fileID: 3242369926088055765}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +561,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 16089131595940970, guid: d96747f56e1f0694d89f69278dad6b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -581,7 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382744810913180118}
   - component: {fileID: 1278592592064902543}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +643,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -3502516996955806060, guid: d96747f56e1f0694d89f69278dad6b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -663,7 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793852868883576422}
   - component: {fileID: 3868964951964451718}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +725,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -8827067492786131794, guid: d96747f56e1f0694d89f69278dad6b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 45741448}
   m_Layer: 0
   m_Name: BowMask
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87963c442bd1f49a83db198149e6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 7611059595987082232, guid: 79d6f77e8d8d88d4182750e7081afa99, type: 3}
   shotPoint: {fileID: 461653022}
   timeBetweenShots: 0.5
