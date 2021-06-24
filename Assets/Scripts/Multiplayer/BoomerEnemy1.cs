@@ -16,6 +16,7 @@ public class BoomerEnemy1 : Enemy1
     public GameObject spit1;
 
     //PhotonView view;
+    GameObject closestplayer = null;
 
     public override void Start()
     {
@@ -24,13 +25,14 @@ public class BoomerEnemy1 : Enemy1
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
        // if (view.IsMine)
        // {
             if (players.Length > 0)
             {
-                GameObject closestplayer = null;
+                
                 float disttoclosestplayer = Mathf.Infinity;
 
                 foreach (GameObject currentplayer in players)
@@ -57,28 +59,17 @@ public class BoomerEnemy1 : Enemy1
 
     public void RangedAttack()
     {
-        //if (view.IsMine)
-        //{
+        if (view.IsMine)
+        { 
             if (players.Length > 0)
             {
-                GameObject closestplayer = null;
-                float disttoclosestplayer = Mathf.Infinity;
 
-                foreach (GameObject currentplayer in players)
-                {
-                    float distanceToEnemy = (currentplayer.transform.position - this.transform.position).sqrMagnitude;
-                    if (distanceToEnemy < disttoclosestplayer)
-                    {
-                        disttoclosestplayer = distanceToEnemy;
-                        closestplayer = currentplayer;
-                    }
-                }
                 Vector2 direction = closestplayer.transform.position - spitPoint.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
                 spitPoint.rotation = rotation;
                 PhotonNetwork.Instantiate(spit1.name, spitPoint.position, spitPoint.rotation);
             }
-     //   }
+        }
     }
 }

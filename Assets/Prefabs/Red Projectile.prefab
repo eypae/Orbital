@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6084912878122940746}
   m_Layer: 0
   m_Name: Red Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238ea3403812a6049bd9920b6e775ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 40
   lifeTime: 2
   explosion: {fileID: 8798347050712520650, guid: 59c3ebb426e467146ac698bc57759116, type: 3}
-  damage: 3
+  damage: 2

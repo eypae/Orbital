@@ -20,8 +20,8 @@ public class WaveSpawner : MonoBehaviour
     private int currentWaveIndex;
     private int prevWaveIndex = -1;
     public Transform player; //reference to the player
-    
 
+    public int count = 1;
     private bool finishedSpawning;
 
     public GameObject boss;
@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator StartNextWave(int index)
     {
-        if (prevWaveIndex != index)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             yield return new WaitForSeconds(1);
         }
@@ -51,7 +51,7 @@ public class WaveSpawner : MonoBehaviour
         currentWave = waves[index];
 
         if (index == prevWaveIndex) {
-            currentWave.count++;
+            currentWave.count = currentWave.count + 5;
         }
 
         for (int i = 0; i < currentWave.count; i++)
@@ -80,22 +80,28 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if (finishedSpawning == true && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            finishedSpawning = false;
-            if (currentWaveIndex + 1 < waves.Length)
+        if (finishedSpawning == true)// && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
             {
-                prevWaveIndex = currentWaveIndex;
-                currentWaveIndex++;
-                StartCoroutine(StartNextWave(currentWaveIndex));
+                finishedSpawning = false;
+                if (currentWaveIndex + 1 < waves.Length)
+                {
+                    count++;
+                    timeBetweenWaves = timeBetweenWaves + 5;
+                    prevWaveIndex = currentWaveIndex;
+                    currentWaveIndex++;
+                    StartCoroutine(StartNextWave(currentWaveIndex));
+                }
+                else
+                {
+                    if (count % 4 == 0)
+                    {
+                        Instantiate(boss, bossSpawnPoint.position, bossSpawnPoint.rotation);
+                    }
+                    prevWaveIndex = currentWaveIndex;
+                    StartCoroutine(StartNextWave(currentWaveIndex));
+
+                }
             }
-            else
-            {
-                Instantiate(boss, bossSpawnPoint.position, bossSpawnPoint.rotation);
-                //prevWaveIndex = currentWaveIndex;
-                //StartCoroutine(StartNextWave(currentWaveIndex));
-            }
-        }
     }
 }
 

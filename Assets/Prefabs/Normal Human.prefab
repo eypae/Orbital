@@ -121,7 +121,7 @@ MonoBehaviour:
   maxX: 13.66
   minY: -6.1
   maxY: 5.59
-  speed: 2
+  speed: 3
 --- !u!50 &5672138809482991480
 Rigidbody2D:
   serializedVersion: 4

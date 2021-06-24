@@ -25,7 +25,7 @@ public class Player1 : MonoBehaviour
     //public GameObject Camera;
     // Start is called before the first frame update
 
-    private bool invincible = true;
+    private bool invincible = false;
 
     PhotonView view;
 

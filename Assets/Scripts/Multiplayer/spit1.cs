@@ -15,12 +15,6 @@ public class spit1 : MonoBehaviour
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-       // view = GetComponent<PhotonView>();
-    }
-        
-    // Update is called once per frame
-    void Update()
-    {
         if (players.Length > 0)
         {
             GameObject closestplayer = null;
@@ -35,9 +29,15 @@ public class spit1 : MonoBehaviour
                     closestplayer = currentplayer;
                 }
             }
-            //playerScript = closestplayer.GetComponent<Player1>();
+          //  playerScript = closestplayer.GetComponent<Player1>();
             targetPosition = closestplayer.transform.position;
 
+            // view = GetComponent<PhotonView>();
+        }
+    }
+        // Update is called once per frame
+        void Update()
+    {
             if (Vector2.Distance(transform.position, targetPosition) > .1f)
             {
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
@@ -47,7 +47,7 @@ public class spit1 : MonoBehaviour
                 PhotonNetwork.Destroy(gameObject);
             }
         }
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,7 +55,7 @@ public class spit1 : MonoBehaviour
        // {
             if (collision.tag == "Player")
             {
-                //playerScript.TakeDamage(damage);
+             //   playerScript.TakeDamage(damage);
                 PhotonNetwork.Destroy(gameObject);
             }
         //}

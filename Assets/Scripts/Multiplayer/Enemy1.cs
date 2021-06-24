@@ -17,15 +17,25 @@ public class Enemy1 : MonoBehaviour
     public int pickupChance;
     public GameObject[] pickups;
 
+    public PhotonView view;
     
     public virtual void Start()
     {
-      
+        view = GetComponent<PhotonView>();
+        //players = GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    public virtual void Update()
+    {
+       
         players = GameObject.FindGameObjectsWithTag("Player");
     }
 
+    
     public void TakeDamage(int playerDamage)
     {
+        if (view.IsMine)
+        {
             health -= playerDamage;
             if (health <= 0)
             {
@@ -35,8 +45,8 @@ public class Enemy1 : MonoBehaviour
                     GameObject randomPickup = pickups[Random.Range(0, pickups.Length)];
                     PhotonNetwork.Instantiate(randomPickup.name, transform.position, transform.rotation);
                 }
-                PhotonNetwork.Destroy(this.gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
-     
+        }
     }
 }

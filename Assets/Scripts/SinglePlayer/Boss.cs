@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(int enemyDamage)
     {
-        health -= enemyDamage;
+        DamageHealth(enemyDamage);
         if (health <= 0)
         {
             int randomNumber = Random.Range(0, 101);
@@ -36,6 +36,11 @@ public class Boss : MonoBehaviour
 
         Enemy randomEnemy = enemies[Random.Range(0, enemies.Length)];
         Instantiate(randomEnemy, transform.position + new Vector3(spawnOffset, spawnOffset, 0), transform.rotation); //Boss spawns an enemy whenever she gets hit
+    }
+
+    public void DamageHealth(int enemyDamage)
+    {
+        health -= enemyDamage;
     }
     // Start is called before the first frame update
     void Start()

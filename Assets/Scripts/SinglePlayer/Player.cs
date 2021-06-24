@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
     public void TakeDamage(int enemyDamage)
     {
         if (!invincible) {
-            health -= enemyDamage;
+            DamageHealth(enemyDamage);
             UpdateHealthUI(health);
             if (health <= 0)
             {
@@ -69,6 +69,14 @@ public class Player : MonoBehaviour {
                 invincible = true;
                 Invoke("resetInvulnerability", 1);
             }
+        }
+    }
+
+    public void DamageHealth(int enemyDamage)
+    {
+        if (!invincible)
+        {
+            health -= enemyDamage;
         }
     }
 
@@ -99,12 +107,19 @@ public class Player : MonoBehaviour {
 
     public void Heal(int healAmount)
     {
+        HealPlayer(healAmount);
+        UpdateHealthUI(health);
+    }
+
+    public void HealPlayer(int healAmount)
+    {
         if (health + healAmount > 5)
         {
             health = 5;
-        } else {
+        }
+        else
+        {
             health += healAmount;
         }
-        UpdateHealthUI(health);
     }
 }

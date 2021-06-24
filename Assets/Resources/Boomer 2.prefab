@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 2414102881553872083}
   - component: {fileID: 8053150670420605521}
   - component: {fileID: 7409618162287946842}
-  - component: {fileID: 3723652976873117648}
   m_Layer: 8
   m_Name: Boomer 2
   m_TagString: Enemy
@@ -211,6 +210,7 @@ MonoBehaviour:
   pickupChance: 20
   pickups:
   - {fileID: 7765557666918276631, guid: 6e9d5617af989c6449906b964282ac18, type: 3}
+  view: {fileID: 0}
   stopDistance: 3
   spitPoint: {fileID: 3997470507029500790}
   spit1: {fileID: 5888313298543942427, guid: 242f25bd9eda802489febd6253ae59ab, type: 3}
@@ -291,26 +291,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &3723652976873117648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3393263380579687380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4ae795551356847ad952903046d5d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2
-  players: []
-  speed: 2
-  timeBetweenAttacks: 3
-  damage: 1
-  pickupChance: 20
-  pickups:
-  - {fileID: 7765557666918276631, guid: 6e9d5617af989c6449906b964282ac18, type: 3}
 --- !u!1 &3988401235671618098
 GameObject:
   m_ObjectHideFlags: 0
