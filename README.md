@@ -8,5 +8,8 @@ Level of Achievement: Apollo 11
 ## Milestone 1 Readme:
 https://docs.google.com/document/d/1YabxKbT2x0_mFrD0iaE2k_NAEuQBGpX8TTYhoxvdfgA/edit?usp=sharing
 
+## Milestone 2 Readme:
+https://docs.google.com/document/d/11KhQYW5RReExcZ0AoUJwT8GS_VzrxFckw0vNH293Jjk/edit?usp=sharing
+
 ## Gameplay demo:
 https://play.unity.com/mg/other/build-8sm
