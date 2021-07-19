@@ -13,3 +13,6 @@ https://docs.google.com/document/d/11KhQYW5RReExcZ0AoUJwT8GS_VzrxFckw0vNH293Jjk/
 
 ## Gameplay demo:
 https://play.unity.com/mg/other/build-8sm
+
+## Developer guide:
+https://docs.google.com/document/d/1xLi-T5xfJ8Kf0hXbx7M8fPwGPSCxDhvqmJv1HYTZmTk/edit?usp=sharing
