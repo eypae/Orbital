@@ -10,6 +10,9 @@ https://play.unity.com/mg/other/build-8sm
 ## Developer guide:
 https://docs.google.com/document/d/1xLi-T5xfJ8Kf0hXbx7M8fPwGPSCxDhvqmJv1HYTZmTk/edit?usp=sharing
 
+## User guide:
+https://docs.google.com/document/d/1OFSU-ofaUjcsbsESmpblGx7HVJhHff3e_wpt1dAqE4Y/edit?usp=sharing
+
 # Orbital
 Orbital 2021 <br />
 Team Name: Where's Your Mask? <br />
