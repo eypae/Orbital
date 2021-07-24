@@ -8,6 +8,21 @@ TextureImporter:
   - first:
       213: 6427528474250687501
     second: Weapons-Enemies_1
+  - first:
+      213: 3471567683556175771
+    second: Weapons-Enemies_2
+  - first:
+      213: 3208212152300382866
+    second: Weapons-Enemies_3
+  - first:
+      213: 4158372247098468099
+    second: Weapons-Enemies_4
+  - first:
+      213: 2801860388929516757
+    second: Weapons-Enemies_5
+  - first:
+      213: -2412396445962910351
+    second: Weapons-Enemies_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -124,12 +139,12 @@ TextureImporter:
       name: Weapons-Enemies_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 237
+        x: 11
+        y: 396
         width: 346
         height: 105
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,12 +160,12 @@ TextureImporter:
       name: Weapons-Enemies_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 111
+        x: 10
+        y: 269
         width: 356
         height: 111
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -158,6 +173,111 @@ TextureImporter:
       bones: []
       spriteID: d04bb63c71b233950800000000000000
       internalID: 6427528474250687501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons-Enemies_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 159
+        width: 355
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f67104a6c7d2030800000000000000
+      internalID: 3471567683556175771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons-Enemies_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 46
+        width: 351
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29aa4f564fbd58c20800000000000000
+      internalID: 3208212152300382866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons-Enemies_4
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 268
+        width: 511
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307a528d68185b930800000000000000
+      internalID: 4158372247098468099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons-Enemies_5
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 46
+        width: 295
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4b168cd2532e620800000000000000
+      internalID: 2801860388929516757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons-Enemies_6
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 186
+        width: 273
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17547fcb632758ed0800000000000000
+      internalID: -2412396445962910351
       vertices: []
       indices: 
       edges: []

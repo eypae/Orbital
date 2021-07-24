@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 1
+  heart: {fileID: 0}
+  sound: {fileID: 5058027065188604078, guid: 0b8a4abd01f938049803d824d6e70b14, type: 3}
 --- !u!114 &1899433855894681443
 MonoBehaviour:
   m_ObjectHideFlags: 0

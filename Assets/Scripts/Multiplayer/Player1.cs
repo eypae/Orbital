@@ -13,43 +13,31 @@ public class Player1 : MonoBehaviour
     private Animator anim;
 
     private Vector2 moveAmount;
-
-    public int health;
-
-    public Image[] hearts; //array to store all our hearts
-    public Sprite redHeart; //red heart
-    public Sprite blackHeart; //black heart
-
     private Transitions sceneTransitions;
 
-    //public GameObject Camera;
-    // Start is called before the first frame update
+    public GameObject heart;
+    PhotonView heartPhoton;
+     PhotonView viewy;
 
-    private bool invincible = false;
+    public GameObject[] players;
 
-    PhotonView view;
+    public GameObject sound;
 
     void Awake()
     {
         anim = GetComponent<Animator>(); //Enables access to everything in the Animator, able to tweak Player Animator settings via code
         rb = GetComponent<Rigidbody2D>(); //setting rb variable equal to the rigidbody2d component that is attached to player character
         sceneTransitions = FindObjectOfType<Transitions>();
-        view = GetComponent<PhotonView>();
-      //  hehe();
+        viewy = GetComponent<PhotonView>();
+        heart = GameObject.FindGameObjectWithTag("Health");
+        heartPhoton = heart.GetComponent<PhotonView>();
     }
-
-    //void hehe()
-    //{
-      //  if (view.IsMine)
-        //{
-          //  Camera.SetActive(true);
-        //}
-    //}
 
     // Update is called once per frame
     void Update()
     {
-        if (view.IsMine)
+        players = GameObject.FindGameObjectsWithTag("Player");
+        if (viewy.IsMine)
         {
             //Vector2 variable = x,y coordinate. Use this variable to detect what keys the user is pressing. 
             Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -72,55 +60,60 @@ public class Player1 : MonoBehaviour
         rb.MovePosition(rb.position + moveAmount * Time.fixedDeltaTime); //Time.fixedDeltaTime makes it framerate independent
     }
 
-    public void TakeDamage(int enemyDamage)
+    public void SpeedUp()
     {
-        if (!invincible)
+        foreach (GameObject i in players)
         {
-            health -= enemyDamage;
-            UpdateHealthUI(health);
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-                sceneTransitions.loadScene("GameOver 1");
-            }
-            else
-            {
-                invincible = true;
-                Invoke("resetInvulnerability", 3);
-            }
+            Instantiate(sound, transform.position, transform.rotation);
+            i.GetComponent<Player1>().UpSpeed();
         }
     }
 
-    void resetInvulnerability()
+    void UpSpeed()
     {
-        invincible = false;
+        speed = 10;
+        Invoke("Wait", 5);
     }
 
-    void UpdateHealthUI(int currentHealth)
+    void Wait()
     {
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < currentHealth)
-            {
-                hearts[i].sprite = redHeart;
-            }
-            else
-            {
-                hearts[i].sprite = blackHeart;
-            }
-        }
+        speed = 5;
     }
 
-    public void Heal(int healAmount)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (health + healAmount > 5)
+        if (collision.tag == "Spit")
         {
-            health = 5;
+            heartPhoton.RPC("TakeDamage", RpcTarget.All, 1);
+            //collision.GetComponent<Enemy1>().TakeDamage(damage);
+         //   view.RPC("TakeDamage", RpcTarget.All, 1);
+            //TakeDamage(1);
         }
-        else
+        if (collision.tag == "Boss")
         {
-            health += healAmount;
+            heartPhoton.RPC("TakeDamage", RpcTarget.All, 1);
+           // view.RPC("TakeDamage", RpcTarget.All, 1);
+            //TakeDamage(1);
         }
-        UpdateHealthUI(health);
+      
+    }
+
+    public void UpDamage()
+    {
+        GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
+        weapon.GetComponent<WeaponMultiplayer>().UpDamage();
+    }
+
+    public void UpWeaponSpeed()
+    {
+        GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
+        weapon.GetComponent<WeaponMultiplayer>().UpWeaponSpeed();
+    }
+
+    //[PunRPC]
+    public void ChangeWeapon(GameObject weaponToEquip)
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Weapon"));
+     Instantiate(weaponToEquip, transform.position, transform.rotation,transform);
     }
 }

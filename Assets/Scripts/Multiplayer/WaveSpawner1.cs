@@ -20,21 +20,25 @@ public class WaveSpawner1 : MonoBehaviour
     private Wave currentWave; //stores current wave
     private int currentWaveIndex;
     private int prevWaveIndex = -1;
-    public int numofplayers; //reference to the player
-    
+    public GameObject[] players;//reference to the player
+
 
     private bool finishedSpawning;
     PhotonView view;
-    ///public GameObject boss;
-   /// public Transform bossSpawnPoint;
-    
+    public GameObject boss;
+    public Transform bossSpawnPoint;
+
+    public GameObject healthBar;
+
     void Start()
     {
-        numofplayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        //numofplayers = GameObject.FindGameObjectsWithTag("Player").Length;
         view = GetComponent<PhotonView>();
         StartCoroutine(StartNextWave(currentWaveIndex));
+        //StartCoroutine(view.RPC("StartNextWave", RpcTarget.All, currentWaveIndex));
     }
 
+    
     IEnumerator StartNextWave(int index)
     {
         if (prevWaveIndex != index)
@@ -47,6 +51,7 @@ public class WaveSpawner1 : MonoBehaviour
         }
         StartCoroutine(SpawnWave(index));
     }
+
 
     IEnumerator SpawnWave(int index)
     {
@@ -61,15 +66,20 @@ public class WaveSpawner1 : MonoBehaviour
 
             for (int i = 0; i < currentWave.count; i++)
             {
-                if (numofplayers <= 0)
+                if (currentWaveIndex==0)
                 {
-                    yield break;
+                    players = GameObject.FindGameObjectsWithTag("Player");
                 }
+                
+             //   if (players.Length <= 0)
+                //{
+              //      yield break;
+              //  }
 
-                GameObject randomEnemy = currentWave.enemies[Random.Range(0, currentWave.enemies.Length)];
-                Transform randomSpot = spawnPoints[Random.Range(0, spawnPoints.Length)];
-                PhotonNetwork.Instantiate(randomEnemy.name, randomSpot.position, randomSpot.rotation);
-
+                    GameObject randomEnemy = currentWave.enemies[Random.Range(0, currentWave.enemies.Length)];
+                    Transform randomSpot = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                    PhotonNetwork.Instantiate(randomEnemy.name, randomSpot.position, randomSpot.rotation);
+                
                 if (i == currentWave.count - 1)
                 {
                     finishedSpawning = true;
@@ -86,24 +96,40 @@ public class WaveSpawner1 : MonoBehaviour
 
     void Update()
     {
-       
+        
 
+ 
         if (finishedSpawning == true && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
+            players = GameObject.FindGameObjectsWithTag("Player");
             finishedSpawning = false;
             if (currentWaveIndex + 1 < waves.Length)
             {
                 prevWaveIndex = currentWaveIndex;
                 currentWaveIndex++;
                 StartCoroutine(StartNextWave(currentWaveIndex));
+                //StartCoroutine(view.RPC("StartNextWave", RpcTarget.All, currentWaveIndex));
             }
             else
             {
-                //Instantiate(boss, bossSpawnPoint.position, bossSpawnPoint.rotation);
+                if (GameObject.FindGameObjectsWithTag("Boss").Length == 0)
+                {
+
+                    PhotonNetwork.Instantiate(boss.name, bossSpawnPoint.position, bossSpawnPoint.rotation);
+                    view.RPC("health", RpcTarget.All);
+                }
+                //healthBar.SetActive(true);
                 prevWaveIndex = currentWaveIndex;
                 StartCoroutine(StartNextWave(currentWaveIndex));
+             //   StartCoroutine(view.RPC("StartNextWave", RpcTarget.All, currentWaveIndex));
             }
         }
+    }
+
+    [PunRPC] 
+    public void health()
+    {
+        healthBar.SetActive(true);
     }
 }
 

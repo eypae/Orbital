@@ -125,4 +125,6 @@ MonoBehaviour:
   speed: 20
   lifeTime: 1
   explosion: {fileID: 8987182032722525478, guid: 2e5a43e19bb7cd241a919f87df3a8895, type: 3}
+  player: {fileID: 0}
   damage: 1
+  shootsound: {fileID: 4677253023508955038, guid: 1243719cb4afc024183e5b4d51d0f55a, type: 3}

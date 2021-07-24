@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -16,9 +17,12 @@ public class Boss : MonoBehaviour
     public int pickupChance;
     public GameObject[] pickups;
 
+    private Slider healthBar;
+
     public void TakeDamage(int enemyDamage)
     {
         DamageHealth(enemyDamage);
+        healthBar.value = health;
         if (health <= 0)
         {
             int randomNumber = Random.Range(0, 101);
@@ -28,6 +32,7 @@ public class Boss : MonoBehaviour
                 Instantiate(randomPickup, transform.position, transform.rotation);
             }
             Destroy(this.gameObject);
+            healthBar.gameObject.SetActive(false);
         }
         if (health <= halfHealth)
         {
@@ -47,6 +52,9 @@ public class Boss : MonoBehaviour
     {
         halfHealth = health / 2;
         anim = GetComponent<Animator>();
+        healthBar = FindObjectOfType<Slider>();
+        healthBar.maxValue = health;
+        healthBar.value = health;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

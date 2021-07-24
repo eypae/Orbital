@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1617456700596552770}
   - component: {fileID: 1617456700596552797}
   - component: {fileID: 979471514951737207}
+  - component: {fileID: 8377347623674772660}
+  - component: {fileID: -7100564087374284112}
+  - component: {fileID: 8820637291129070243}
   m_Layer: 8
   m_Name: YP Minion 1
   m_TagString: Enemy
@@ -115,16 +118,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777230948fe1e7b49b98b8e01736e4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
-  player: {fileID: 0}
+  health: 1
+  players: []
   speed: 3
   timeBetweenAttacks: 1
   damage: 1
-  pickupChance: 0
+  pickupChance: 40
   pickups:
-  - {fileID: 0}
+  - {fileID: 7765557666918276631, guid: 6e9d5617af989c6449906b964282ac18, type: 3}
+  view: {fileID: -7100564087374284112}
   stopDistance: 1
   attackSpeed: 5
+  heart: {fileID: 0}
+--- !u!114 &8377347623674772660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456700596552799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &-7100564087374284112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456700596552799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8377347623674772660}
+  - {fileID: 8820637291129070243}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8820637291129070243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456700596552799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &1617456701023410984
 GameObject:
   m_ObjectHideFlags: 0

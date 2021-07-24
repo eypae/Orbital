@@ -11,12 +11,12 @@ public class RandomMovement : MonoBehaviour
     public float speed;
 
     Vector2 targetPosition;
-    private Player player;
+   // private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+       // player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         targetPosition = GetRandomPosition();
     }
 
@@ -39,12 +39,5 @@ public class RandomMovement : MonoBehaviour
         return new Vector2(randomX, randomY);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Projectile"))
-        {
-            player.TakeDamage(1);
-            Destroy(this.gameObject);      
-        }
-    }
+  
 }

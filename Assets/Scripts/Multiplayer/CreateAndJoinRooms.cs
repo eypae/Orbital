@@ -8,7 +8,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
+
+  //  public GameObject waitlobby;
     
+
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(createInput.text);
@@ -21,6 +24,12 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
    public override void OnJoinedRoom()
    {
-        PhotonNetwork.LoadLevel("New");
-   }
+        PhotonNetwork.LoadLevel("Waiting Lobby");
+       // waitlobby = GameObject.FindGameObjectWithTag("RoomDeets");
+     //   waitlobby.GetComponent<WaitLobby>().players++;
+    //    waitlobby.GetComponent<WaitLobby>().room = "createInput.text";
+
+
+
+    }
 }

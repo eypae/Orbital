@@ -209,8 +209,9 @@ MonoBehaviour:
   damage: 1
   pickupChance: 20
   pickups:
-  - {fileID: 7765557666918276631, guid: 6e9d5617af989c6449906b964282ac18, type: 3}
-  view: {fileID: 0}
+  - {fileID: 5317694619126915451, guid: afb248a09b9a2b541a6a29777179c33b, type: 3}
+  - {fileID: 456106205839425654, guid: e6e17928441db1e4390182095671ff19, type: 3}
+  view: {fileID: 2414102881553872083}
   stopDistance: 3
   spitPoint: {fileID: 3997470507029500790}
   spit1: {fileID: 5888313298543942427, guid: 242f25bd9eda802489febd6253ae59ab, type: 3}

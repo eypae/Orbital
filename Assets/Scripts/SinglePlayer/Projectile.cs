@@ -9,14 +9,16 @@ public class Projectile : MonoBehaviour
     public float lifeTime;
 
     public GameObject explosion;
-
+    public Transform player;
     public int damage;
- 
+
+    public GameObject shootsound;
     // Start is called before the first frame update
     void Start()
     {
-       
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         Invoke("DestroyProjectile", lifeTime);
+        Instantiate(shootsound, transform.position, transform.rotation);
     }
 
     // Update is called once per frame
@@ -36,7 +38,14 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy" || collision.tag == "Decoy")
+        if (collision.tag == "Decoy")
+        {
+            collision.GetComponent<Enemy>().TakeDamage(damage);
+            player.GetComponent<Player>().TakeDamage(1);
+
+            DestroyProjectile();
+        }
+        if (collision.tag == "Enemy")
         {
             collision.GetComponent<Enemy>().TakeDamage(damage);
             DestroyProjectile();

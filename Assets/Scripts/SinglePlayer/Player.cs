@@ -20,8 +20,13 @@ public class Player : MonoBehaviour {
 
     private Transitions sceneTransitions;
 
+    public Animator hurtAnim;
+
     private bool invincible = false;
-    
+
+    public GameObject deathsound;
+    public GameObject hurtsound;
+    //private bool speedboost = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +40,14 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+      //  if (speedboost)
+        //{
+          //  speed = 10;
+        //}
+        //else
+        //{
+          //  speed = 5;
+        //}
         //Vector2 variable = x,y coordinate. Use this variable to detect what keys the user is pressing. 
             Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             moveAmount = moveInput.normalized * speed; //.normalized = ensures player does not move faster when moving diagonally
@@ -60,9 +73,12 @@ public class Player : MonoBehaviour {
         if (!invincible) {
             DamageHealth(enemyDamage);
             UpdateHealthUI(health);
+            Instantiate(hurtsound, transform.position, transform.rotation);
+            hurtAnim.SetTrigger("hurt");
             if (health <= 0)
             {
                 Destroy(gameObject);
+                Instantiate(deathsound, transform.position, transform.rotation);
                 sceneTransitions.loadScene("GameOver");
             } else
             {
@@ -77,6 +93,7 @@ public class Player : MonoBehaviour {
         if (!invincible)
         {
             health -= enemyDamage;
+            
         }
     }
 
@@ -103,6 +120,19 @@ public class Player : MonoBehaviour {
                 hearts[i].sprite = blackHeart;
             }
         }
+    }
+
+    public void SpeedUp()
+    {
+        speed = 10;
+       
+        Invoke("Wait",5);
+        
+    }
+
+    void Wait()
+    {
+        speed=5;
     }
 
     public void Heal(int healAmount)

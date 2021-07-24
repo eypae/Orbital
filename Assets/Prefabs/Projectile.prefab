@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9a979b2ff10ee2542923443bffb54834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,7 +99,9 @@ MonoBehaviour:
   speed: 15
   lifeTime: 1
   explosion: {fileID: 5263373925051281789, guid: f497ee8da93683548a3dfd6a48f6ab87, type: 3}
+  player: {fileID: 0}
   damage: 1
+  shootsound: {fileID: 5094488076173237932, guid: 82b578fdac51e4444a3bafc62bed24d5, type: 3}
 --- !u!61 &2777152269684262182
 BoxCollider2D:
   m_ObjectHideFlags: 0

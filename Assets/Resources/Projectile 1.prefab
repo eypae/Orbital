@@ -183,3 +183,4 @@ MonoBehaviour:
   lifeTime: 1
   explosion: {fileID: 5263373925051281789, guid: f78269d9d00962c4f8e3010d98224fdc, type: 3}
   damage: 1
+  heart: {fileID: 0}

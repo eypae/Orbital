@@ -10,10 +10,11 @@ public class spit1 : MonoBehaviour
     //PhotonView view;
     public float speed;
     public int damage;
-
+    PhotonView view;
     // Start is called before the first frame update
     void Start()
     {
+        view = GetComponent<PhotonView>();
         players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length > 0)
         {
@@ -38,6 +39,8 @@ public class spit1 : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
+        if (view.IsMine)
+        {
             if (Vector2.Distance(transform.position, targetPosition) > .1f)
             {
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
@@ -47,17 +50,28 @@ public class spit1 : MonoBehaviour
                 PhotonNetwork.Destroy(gameObject);
             }
         }
-    
+        }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    [PunRPC]
+    void DestroySpit()
     {
-      //  if (view.IsMine)
-       // {
-            if (collision.tag == "Player")
-            {
-             //   playerScript.TakeDamage(damage);
-                PhotonNetwork.Destroy(gameObject);
-            }
-        //}
+        if (view.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            //collision.GetComponent<Enemy1>().TakeDamage(damage);
+            view.RPC("DestroySpit", RpcTarget.All);
+        }
+
     }
 }
+

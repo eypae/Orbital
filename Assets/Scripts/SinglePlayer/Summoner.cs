@@ -10,7 +10,7 @@ public class Summoner : Enemy
     public float minY;
     public float maxY;
 
-    private Vector2 targetPosition;
+    public Vector2 targetPosition;
     private Animator anim;
 
     public float timeBetweenSummons;

@@ -1,22 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MeleeEnemy1 : Enemy
+public class MeleeEnemy1 : Enemy1
 {
     public float stopDistance;
 
     private float attackTime;
 
     public float attackSpeed;
+    
+    GameObject closestplayer = null;
 
-    private void Update()
+    PhotonView playerView;
+    public GameObject heart;
+    PhotonView heartPhoton;
+
+    public override void Start()
     {
-        if (player != null)
+        //view = GetComponent<PhotonView>();
+        base.Start();
+        heart = GameObject.FindGameObjectWithTag("Health");
+        heartPhoton = heart.GetComponent<PhotonView>();
+
+    }
+
+    public override void Update()
+    {
+        base.Update();
+       
+        if (players.Length > 0)
         {
-            if (Vector2.Distance(transform.position, player.position) > stopDistance)
+
+            float disttoclosestplayer = Mathf.Infinity;
+
+            foreach (GameObject currentplayer in players)
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                float distanceToEnemy = (currentplayer.transform.position - this.transform.position).sqrMagnitude;
+                if (distanceToEnemy < disttoclosestplayer)
+                {
+                    disttoclosestplayer = distanceToEnemy;
+                    closestplayer = currentplayer;
+                }
+            }
+            playerView = closestplayer.GetComponent<PhotonView>();
+            if (Vector2.Distance(transform.position, closestplayer.transform.position) > stopDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, closestplayer.transform.position, speed * Time.deltaTime);
             } else
             {
                 if (Time.time >= attackTime)
@@ -25,14 +56,16 @@ public class MeleeEnemy1 : Enemy
                     attackTime = Time.time + timeBetweenAttacks;
                 }
             }
+
         }
     }
 
     IEnumerator Attack()
     {
-        player.GetComponent<Player1>().TakeDamage(damage);
+        heartPhoton.RPC("TakeDamage", RpcTarget.All, damage);
+        //playerView.RPC("TakeDamage",RpcTarget.All, damage);
         Vector2 originalPosition = transform.position;
-        Vector2 targetPosition = player.position;
+        Vector2 targetPosition = closestplayer.transform.position;
 
         float percent = 0;
         while (percent <= 1)

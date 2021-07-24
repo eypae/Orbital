@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;
 
 public class HealthPickup1 : MonoBehaviour
 {
-    Player1 playerScript;
+   
     public int healAmount;
-
-    private void Start()
+    public GameObject heart;
+    PhotonView heartPhoton;
+    public GameObject sound;
+    void Start()
     {
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player1>();
+        heart = GameObject.FindGameObjectWithTag("Health");
+        heartPhoton = heart.GetComponent<PhotonView>();
     }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            playerScript.Heal(healAmount);
+            Instantiate(sound, transform.position, transform.rotation);
+            heartPhoton.RPC("Heal", RpcTarget.All, 1);
             Destroy(gameObject);
         }
     }

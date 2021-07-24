@@ -10,6 +10,13 @@ public class Weapon : MonoBehaviour
 
     private float shotTime;
 
+    Animator cameraAnim;
+
+    private void Start()
+    {
+        cameraAnim = Camera.main.GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +30,7 @@ public class Weapon : MonoBehaviour
             if(Time.time >= shotTime)
             {
                 Instantiate(projectile, shotPoint.position, transform.rotation);
+                cameraAnim.SetTrigger("Shake");
                 shotTime = Time.time + timeBetweenShots;
             }
         }

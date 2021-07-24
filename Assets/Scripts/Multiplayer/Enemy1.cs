@@ -31,7 +31,7 @@ public class Enemy1 : MonoBehaviour
         players = GameObject.FindGameObjectsWithTag("Player");
     }
 
-    
+    [PunRPC]
     public void TakeDamage(int playerDamage)
     {
         if (view.IsMine)
@@ -47,6 +47,17 @@ public class Enemy1 : MonoBehaviour
                 }
                 PhotonNetwork.Destroy(gameObject);
             }
+
         }
+    }
+    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Projectile")
+        {
+            //collision.GetComponent<Enemy1>().TakeDamage(damage);
+            view.RPC("TakeDamage", RpcTarget.All, collision.GetComponent<Projectile1>().GetDamage());
+        }
+       
     }
 }
